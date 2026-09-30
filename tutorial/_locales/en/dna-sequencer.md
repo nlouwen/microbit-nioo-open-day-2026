@@ -7,7 +7,7 @@ In this tutorial, you will learn to code our micro:bit "sequencer" yourself!
 ## {Step 1}
 
 In the workspace below, you can see we have added some "blocks" to start. 
-These blocks tell the micro-bit what to do.<br>
+These blocks tell the micro:bit what to do.<br>
 In this case it writes the color sensor's RGB values (Red, Green, Blue) 
 to the computer every second.
 
