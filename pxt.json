@@ -11,7 +11,8 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "main.py"
+        "main.py",
+        "tutorial/_locales/en/dna-sequences.md"
     ],
     "testFiles": [
         "test.ts"
