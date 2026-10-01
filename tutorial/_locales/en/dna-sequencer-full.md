@@ -13,10 +13,21 @@ It writes the color sensor's RGB values (Red, Green, Blue) to the computer.
 
 ## {Step 3}
 
+During this tutorial, you will build your own "sequencer" by adding more blocks.
+To add a block, click and drag the chosen block from the toolbox on the left into 
+the workspace. Some blocks can fit into each other by dragging one on top of another. 
+When the shapes match, the blocks will snap into place like puzzle pieces.
+To delete a block, click and drag it back into the toolbox. 
+
+## {Step 4}
+
 Let's try to detect which color was scanned by the color scanner. Click on
 ``||logic:Logic||`` in the toolbox and drag an ``||logic:if true then||`` block
 onto the workspace. Drop it after the ``||basic:pause||`` block.
-The ``||logic:if true then||`` block you just added checks if something is true or false.
+The ``||logic:if true then||`` block you just added checks if something is 
+true or false.<br>
+*If you need any hints, check the lightbulb!*
+
 
 ```blocks
 input.onButtonPressed(Button.A, function () {
@@ -26,7 +37,7 @@ if (true)})
 
 ```
 
-## {Step 4}
+## {Step 5}
 
 Let's check if the scanned color was red. From the color sensor ``||TCS34725:TCS34725||``
 in the toolbox, drag an ``||TCS34725:is color||`` block to replace **true** in
@@ -45,7 +56,7 @@ if (TCS34725.isColor(
 })
 ```
 
-## {Step 5}
+## {Step 6}
 
 Now we can add what happens when red is detected. In our "sequencer", a red
 color means the nucleotide base "A". From ``||basic:Basic||``, drag a ``||basic:show string||``
@@ -66,7 +77,7 @@ if (TCS34725.isColor(
     )) {basic.showString("A")}
 ```
 
-## {Step 6}
+## {Step 7}
 
 We also need to communicate to the computer which nucleotide base was scanned.
 Look for ``||serial:Serial||`` in the toolbox, this will be located under
@@ -91,7 +102,7 @@ if (TCS34725.isColor(
 })
 ```
 
-## {Step 7}
+## {Step 8}
 
 Let's also add what happens when the color is **not** red. Click on the 
 **plus** icon on the bottom of the ``||logic:if||`` block. Now an **else** appears.
@@ -122,7 +133,7 @@ if (TCS34725.isColor(
     }
 ```
 
-## {Step 8}
+## {Step 9}
 
 Of course, red is not the only color we see. You can skip this step, but 
 if you want to complete the three other colors, you can click on
@@ -179,7 +190,7 @@ input.onButtonPressed(Button.A, function () {
 ```
 
 
-## {Step 9}
+## {Step 10}
 
 The micro:bit has many other customizable features! For example, let's play
 a sound whenever the **A** button on the micro:bit is pressed. 
@@ -196,7 +207,7 @@ input.onButtonPressed(Button.A, function () {
 })
 ```
 
-## {Step 10}
+## {Step 11}
 
 Congratulations - you have made a micro:bit DNA sequencer! 
 
