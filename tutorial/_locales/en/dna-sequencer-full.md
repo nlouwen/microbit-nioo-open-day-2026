@@ -94,7 +94,7 @@ if (TCS34725.isColor(
 ## {Step 7}
 
 Let's also add what happens when the color is **not** red. Click on the 
-**plus** icon in the ``||logic:if||`` block. Now an **else** appears.
+**plus** icon on the bottom of the ``||logic:if||`` block. Now an **else** appears.
 From ``||basic:Basic||``, drag an ``||basic:show leds||`` block into the
 **else** slot. Draw a "?" (or anything you'd like) to show that the color was not recognized.
 
@@ -196,9 +196,14 @@ input.onButtonPressed(Button.A, function () {
 })
 ```
 
-## @showdialog 
+## {Step 10}
 
 Congratulations - you have made a micro:bit DNA sequencer! 
+
+Now download your code onto your micro:bit. 
+Press the download button in the bottom left and follow the instructions.
+
+## @showdialog 
 
 This is the end of this tutorial. Once you click next, you will have access to all
 available blocks. There is much more to try out!
