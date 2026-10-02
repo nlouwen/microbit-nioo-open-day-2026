@@ -12,7 +12,9 @@
         "main.ts",
         "README.md",
         "main.py",
-        "tutorial/_locales/en/dna-sequences.md"
+        "tutorial/_locales/en/dna-sequencer.md",
+        "tutorial/_locales/en/dna-sequencer-full.md",
+        "tutorial/_locales/nl/dna-sequencer-full.md"
     ],
     "testFiles": [
         "test.ts"
