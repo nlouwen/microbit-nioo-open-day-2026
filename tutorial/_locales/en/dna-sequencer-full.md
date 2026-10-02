@@ -23,7 +23,7 @@ To delete a block, click and drag it back into the toolbox.
 
 Let's try to detect which color was scanned by the color scanner. Click on
 ``||logic:Logic||`` in the toolbox and drag an ``||logic:if true then||`` block
-onto the workspace. Drop it after the ``||basic:pause||`` block.
+onto the workspace. Drop it after the ``||serial:serial write string||`` blocks.
 The ``||logic:if true then||`` block you just added checks if something is 
 true or false.<br>
 *If you need any hints, check the lightbulb!*
@@ -32,7 +32,7 @@ true or false.<br>
 ```blocks
 input.onButtonPressed(Button.A, function () {
 serial.writeString("")
-basic.pause(1000)
+
 if (true)})
 
 ```
@@ -41,17 +41,18 @@ if (true)})
 
 Let's check if the scanned color was red. From the color sensor ``||TCS34725:TCS34725||``
 in the toolbox, drag an ``||TCS34725:is color||`` block to replace **true** in
-the ``||logic:if true then||`` block. Fill in the values R=160, G=70, B=60.
+the ``||logic:if true then||`` block. <br>
+Fill in the values R=160, G=70, B=60, tolerance=25.
 
 ```blocks
 input.onButtonPressed(Button.A, function () {
 serial.writeString("")
-basic.pause(1000)
+
 if (TCS34725.isColor(
     160,
     70,
     60,
-    20
+    25
     )) {}
 })
 ```
@@ -68,12 +69,12 @@ Change the shown string to **A**.
 ```blocks
 input.onButtonPressed(Button.A, function () {
 serial.writeString("")
-basic.pause(1000)
+
 if (TCS34725.isColor(
     160,
     70,
     60,
-    20
+    25
     )) {basic.showString("A")}
 ```
 
@@ -82,18 +83,18 @@ if (TCS34725.isColor(
 We also need to communicate to the computer which nucleotide base was scanned.
 Look for ``||serial:Serial||`` in the toolbox, this will be located under
 ``||advanced:Advanced||``. Drop a ``||serial:serial write string||`` into the
-same ``||logic:if||`` block and change the text to **DNA: A**. 
-Also add an empty ``||serial:serial write line||``.
+same ``||logic:if||`` block under ``||basic:show string||`` and change the text to exactly "**DNA: A**". 
+Also add an empty ``||serial:serial write line||`` after ``||serial:serial write string||``.
 
 ```blocks
 input.onButtonPressed(Button.A, function () {
 serial.writeString("")
-basic.pause(1000)
+
 if (TCS34725.isColor(
     160,
     70,
     60,
-    20
+    25
     )) {
     basic.showString("A")
     serial.writeString("DNA: A")
@@ -112,12 +113,12 @@ From ``||basic:Basic||``, drag an ``||basic:show leds||`` block into the
 ```blocks
 input.onButtonPressed(Button.A, function () {
 serial.writeString("")
-basic.pause(1000)
+
 if (TCS34725.isColor(
     160,
     70,
     60,
-    20
+    25
     )) {
     basic.showString("A")
     serial.writeString("DNA: A")
@@ -138,20 +139,22 @@ if (TCS34725.isColor(
 Of course, red is not the only color we see. You can skip this step, but 
 if you want to complete the three other colors, you can click on
 the ``||logic:if||`` **plus** icon again and add more ``||TCS34725:is color||`` checks.
-Use RGB=70,130,75 for green and write **T**, 
-RGB=105,110,50 for yellow and write **G**, 
-RGB=60,105,110 for blue and write **C**.
+Just like you did for **A**, make sure to include one ``||basic:show string||``,
+followed by a ``||serial:serial write string||`` and ``||serial:serial write line||``.<br>
+Use RGB=70,130,75,25 for green and write **T**, <br>
+RGB=105,110,50,25 for yellow and write **G**, <br>
+RGB=60,105,110,25 for blue and write **C**.
 
 ```blocks
 input.onButtonPressed(Button.A, function () {
     serial.writeString("")
-    basic.pause(1000)
+    
     // Check for RED
     if (TCS34725.isColor(
     160,
     70,
     60,
-    20
+    25
     )) {
         basic.showString("A")
         serial.writeString("DNA: A")
@@ -160,7 +163,7 @@ input.onButtonPressed(Button.A, function () {
     70,
     130,
     75,
-    20
+    25
     )) {
         basic.showString("T")
         serial.writeString("DNA: T")
@@ -169,7 +172,7 @@ input.onButtonPressed(Button.A, function () {
     105,
     110,
     50,
-    20
+    25
     )) {
         basic.showString("G")
         serial.writeString("DNA: G")
@@ -178,7 +181,7 @@ input.onButtonPressed(Button.A, function () {
     60,
     105,
     110,
-    20
+    25
     )) {
         basic.showString("C")
         serial.writeString("DNA: C")
@@ -203,7 +206,7 @@ Now press the **A** button on the micro:bit in the left panel!
 input.onButtonPressed(Button.A, function () {
     music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
     serial.writeString("")
-    basic.pause(1000)
+    
 })
 ```
 
@@ -216,7 +219,7 @@ Press the download button in the bottom left and follow the instructions.
 
 ## @showdialog 
 
-This is the end of this tutorial. Once you click next, you will have access to all
+This is the end of this tutorial. Once you click "Done", you will have access to all
 available blocks. There is much more to try out!
 
 ```template
@@ -228,7 +231,7 @@ input.onButtonPressed(Button.A, function () {
     serial.writeString(",")
     serial.writeString("" + TCS34725.blue())
     serial.writeLine("")
-    basic.pause(1000)})
+    })
 })
 
 ```
