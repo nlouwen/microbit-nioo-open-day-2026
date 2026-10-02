@@ -23,7 +23,7 @@ Als je een ​​blok wilt verwijderen, klik en sleep je het terug naar de geree
 
 Laten we proberen te detecteren welke kleur door de kleurensensor is gezien. 
 Klik op ``||logic:Logisch||`` in de gereedschapskist en sleep een ``||logic:als waar dan||``-blok
-naar het werkgebied. Plaats deze onder het ``||basic:pauzeer||``-blok.
+naar het werkgebied. Plaats deze onder de ``||serial:serieel schrijf tekenreeks||`` -blokken.
 Het ``||logic:als waar dan||``-blok dat je zojuist hebt toegevoegd, controleert of iets
 waar of onwaar is.<br>
 *Heb je een hint nodig? Klik dan op het lampje!*
@@ -31,7 +31,7 @@ waar of onwaar is.<br>
 ```blocks
 input.onButtonPressed(Button.A, function () {
 serial.writeString("")
-basic.pause(1000)
+
 if (true)})
 
 ```
@@ -40,17 +40,17 @@ if (true)})
 
 Laten we testen of de gescande kleur rood was. Sleep vanuit de categorie ``||TCS34725:TCS34725||``
 in de gereedschapskist een ``||TCS34725:is color||``-blok naar de plek van **waar** in
-het ``||logic:als waar dan||``-blok. Vul de waarden R=160, G=70, B=60 in.
+het ``||logic:als waar dan||``-blok. Vul de waarden R=160, G=70, B=60, tolerance=25 in.
 
 ```blocks
 input.onButtonPressed(Button.A, function () {
 serial.writeString("")
-basic.pause(1000)
+
 if (TCS34725.isColor(
     160,
     70,
     60,
-    20
+    25
     )) {}
 })
 ```
@@ -69,12 +69,12 @@ Verander de tekens naar **A**.
 ```blocks
 input.onButtonPressed(Button.A, function () {
 serial.writeString("")
-basic.pause(1000)
+
 if (TCS34725.isColor(
     160,
     70,
     60,
-    20
+    25
     )) {basic.showString("A")}
 ```
 
@@ -83,18 +83,18 @@ if (TCS34725.isColor(
 We moeten de computer ook laten weten welke nucleotidebase er is gescand.
 Zoek naar ``||serial:Serieel||`` in de gereedschapskist; dit vind je onder
 ``||advanced:Geavanceerd||``. Sleep een ``||serial:serieel schrijf tekenreeks||`` naar
-hetzelfde ``||logic:als||``-blok en verander de tekst naar **DNA: A**.
-Voeg ook een lege ``||serial:serieel schrijf regel||`` toe.
+hetzelfde ``||logic:als||``-blok en verander de tekst nauwkeurig naar "**DNA: A**".
+Voeg ook een lege ``||serial:serieel schrijf regel||`` toe na ``||serial:serieel schrijf tekenreeks||``.
 
 ```blocks
 input.onButtonPressed(Button.A, function () {
 serial.writeString("")
-basic.pause(1000)
+
 if (TCS34725.isColor(
     160,
     70,
     60,
-    20
+    25
     )) {
     basic.showString("A")
     serial.writeString("DNA: A")
@@ -114,12 +114,12 @@ Sleep vanuit ``||basic:Basis||`` een ``||basic:toon lichtjes||``-blok naar de
 ```blocks
 input.onButtonPressed(Button.A, function () {
 serial.writeString("")
-basic.pause(1000)
+
 if (TCS34725.isColor(
     160,
     70,
     60,
-    20
+    25
     )) {
     basic.showString("A")
     serial.writeString("DNA: A")
@@ -140,21 +140,23 @@ if (TCS34725.isColor(
 Natuurlijk is rood niet de enige kleur die we kunnen zien. 
 Je kunt deze stap overslaan, maar als je de drie andere kleuren wilt toevoegen, 
 kun je opnieuw op het **plus**-icoon van ``||logic:als||`` klikken 
-en meer ``||TCS34725:is color||``-controles toevoegen.<br>
-Gebruik RGB=70,130,75 voor groen en schrijf **T**,<br>
-RGB=105,110,50 voor geel en schrijf **G**,<br>
-RGB=60,105,110 voor blauw en schrijf **C**.
+en meer ``||TCS34725:is color||``-controles toevoegen. 
+Net als voor **A**, voeg een ``||basic:toon tekens||``, gevolgd door een 
+``||serial:serieel schrijf tekenreeks||`` en ``||serial:serieel schrijf regel||``.<br>
+Gebruik RGB=70,130,75,25 voor groen en schrijf **T**,<br>
+RGB=105,110,50,25 voor geel en schrijf **G**,<br>
+RGB=60,105,110,25 voor blauw en schrijf **C**.
 
 ```blocks
 input.onButtonPressed(Button.A, function () {
     serial.writeString("")
-    basic.pause(1000)
+    
     // Check for RED
     if (TCS34725.isColor(
     160,
     70,
     60,
-    20
+    25
     )) {
         basic.showString("A")
         serial.writeString("DNA: A")
@@ -163,7 +165,7 @@ input.onButtonPressed(Button.A, function () {
     70,
     130,
     75,
-    20
+    25
     )) {
         basic.showString("T")
         serial.writeString("DNA: T")
@@ -172,7 +174,7 @@ input.onButtonPressed(Button.A, function () {
     105,
     110,
     50,
-    20
+    25
     )) {
         basic.showString("G")
         serial.writeString("DNA: G")
@@ -181,7 +183,7 @@ input.onButtonPressed(Button.A, function () {
     60,
     105,
     110,
-    20
+    25
     )) {
         basic.showString("C")
         serial.writeString("DNA: C")
@@ -206,7 +208,7 @@ Druk nu op de **A**-knop van de micro:bit in het linkerpaneel!
 input.onButtonPressed(Button.A, function () {
     music.play(music.tonePlayable(262, music.beat(BeatFraction.Whole)), music.PlaybackMode.UntilDone)
     serial.writeString("")
-    basic.pause(1000)
+    
 })
 ```
 
@@ -231,7 +233,7 @@ input.onButtonPressed(Button.A, function () {
     serial.writeString(",")
     serial.writeString("" + TCS34725.blue())
     serial.writeLine("")
-    basic.pause(1000)})
+    })
 })
 
 ```
